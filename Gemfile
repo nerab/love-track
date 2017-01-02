@@ -2,6 +2,8 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'slack-notifier'
+gem 'swr3-nowplaying'
 
 group :development do
   gem 'guard-bundler', require: false

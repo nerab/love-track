@@ -1,4 +1,5 @@
 .bundle
-.cache_rake_t
-vendor/
 .byebug_history
+.cache_rake_t
+.envrc
+vendor/
