@@ -6,6 +6,8 @@ GEM
     backports (3.6.8)
     byebug (9.0.6)
     coderay (1.1.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     ethon (0.10.1)
       ffi (>= 1.3.0)
@@ -40,6 +42,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashdiff (0.3.2)
     highline (1.7.8)
     json (2.0.2)
     launchy (2.4.3)
@@ -107,6 +110,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
+    safe_yaml (1.0.4)
     shellany (0.0.1)
     sinatra (1.4.7)
       rack (~> 1.5)
@@ -130,6 +134,10 @@ GEM
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
     unicode-display_width (1.1.2)
+    webmock (2.3.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket (1.2.3)
 
 PLATFORMS
@@ -151,6 +159,7 @@ DEPENDENCIES
   swr3-nowplaying
   terminal-notifier
   travis
+  webmock
 
 BUNDLED WITH
    1.13.2

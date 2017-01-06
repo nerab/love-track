@@ -3,24 +3,50 @@ require 'sinatra/base'
 
 require 'swr3_now_playing/loader'
 require 'swr3_now_playing/mapper'
-require 'slack-notifier'
+
+require 'love_track/notifier'
+require 'love_track/console_notifier'
 
 module LoveTrack
   class SongsController < Sinatra::Base
-    set :slack, Slack::Notifier.new(ENV.fetch('SLACK_WEBHOOK_URL'))
+    configure :development, :test do
+      set :notifier, ConsoleNotifier.new
+    end
+
+    configure :production do
+      set :notifier, Notifier.new(ENV.fetch('SLACK_WEBHOOK_URL'))
+    end
 
     get '/' do
       begin
-        json = SWR3::NowPlaying::Loader.load
-        song = SWR3::NowPlaying::Mapper.map(json)
-
-        settings.slack.username = 'LoveTrack'
-        settings.slack.ping "@fpu liebt den Song '#{song.title}' von #{song.artist}"
-
-        "#{Time.new} - #{song}"
+        "#{Time.new}: #{song}"
       rescue
-        "Sorry; #{$!.message}"
+        "Sorry; #{$ERROR_INFO.message}"
       end
+    end
+
+    post '/' do
+      protected!
+      msg = "@#{@auth.username} liebt den Song '#{song.title}' von #{song.artist}"
+      settings.notifier.notify(msg)
+      status 201
+      body msg
+    end
+
+    def song
+      json = SWR3::NowPlaying::Loader.load
+      SWR3::NowPlaying::Mapper.map(json)
+    end
+
+    def protected!
+      return if authorized?
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      halt 401, "Not authorized\n"
+    end
+
+    def authorized?
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? && @auth.basic? && @auth.credentials && !@auth.credentials.first.empty?
     end
   end
 end

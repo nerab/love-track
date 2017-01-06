@@ -18,4 +18,5 @@ group :development do
   gem 'rubocop'
   gem 'terminal-notifier'
   gem 'travis'
+  gem 'webmock'
 end
