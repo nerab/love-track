@@ -12,23 +12,30 @@
     state: present
   tags: apt,python,button
 
+- name: Copy python requirements file
+  copy:
+    src: requirements.txt
+    dest: /opt/lovetrack-button/
+    mode: "0755"
+  tags: python,button
+
 - name: Install prerequisite python packages
   pip:
-    requirements: requirements.txt
+    requirements: /opt/lovetrack-button/requirements.txt
     executable: pip3
   tags: python,button
 
 - name: Copy LoveTrack button script
   template:
     src: lovetrack-button.j2
-    dest: "/usr/local/sbin/lovetrack-button"
+    dest: /usr/local/sbin/lovetrack-button
     mode: "0755"
-  tags: button
+    tags: button
 
 - name: Create LoveTrack button systemd service config
   copy:
-    src: "lovetrack-button.service"
-    dest: "/etc/systemd/system/"
+    src: lovetrack-button.service
+    dest: /etc/systemd/system/
     mode: "0664"
   tags: systemd,button
 
