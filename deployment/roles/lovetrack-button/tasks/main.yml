@@ -30,7 +30,7 @@
     src: lovetrack-button.j2
     dest: /usr/local/sbin/lovetrack-button
     mode: "0755"
-    tags: button
+  tags: button
 
 - name: Create LoveTrack button systemd service config
   copy:
@@ -42,6 +42,6 @@
 - name: Start the LoveTrack service
   systemd:
     name: lovetrack-button
-    state: started
+    state: restarted
     enabled: true
   tags: systemd,button

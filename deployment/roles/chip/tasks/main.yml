@@ -9,6 +9,13 @@
     line: "127.0.0.1 lovetrack-button"
   tags: hostname,dns
 
+- name: Use http redirector for apt
+  replace:
+    dest: /etc/apt/sources.list
+    regexp: 'ftp.us'
+    replace: 'httpredir'
+  tags: apt,localization
+
 - name: Install software
   apt:
     update_cache: yes
