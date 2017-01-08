@@ -78,3 +78,11 @@ The following will tail entries related to `lovetrack-button` from the system jo
 ```bash
 sudo journalctl -u lovetrack-button -f
 ```
+
+## `RuntimeError: Error setting up channel XIO-P7, maybe already exported?`
+
+```
+RuntimeError: Error setting up channel XIO-P7, maybe already exported? (gpio_export: could not write '1020' to /sys/class/gpio/export (Device or resource busy))
+```
+
+This happens if the GPIO was not cleanly unexported, e.g. after an unexpected shutdown. Simply run [this script](https://github.com/xtacocorex/CHIP_IO/blob/71b682980405e83b612ea0cdbdff8d5492b71c54/unexport_all.sh)
