@@ -21,5 +21,6 @@
   roles:
     - chip
     - lovetrack-button
+    - rsyslog-patch
     - geerlingguy.ntp
     - jnv.unattended-upgrades
