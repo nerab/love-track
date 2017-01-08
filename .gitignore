@@ -2,4 +2,5 @@
 .byebug_history
 .cache_rake_t
 .envrc
+deployment/*.retry
 vendor/

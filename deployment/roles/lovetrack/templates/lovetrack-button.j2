@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+#
+# Prereq:
+# pip3 install CHIP-IO requests
+#
+
+import CHIP_IO.GPIO as GPIO
+import requests, time, signal, sys
+
+def on_sigint(signal, frame):
+  print('Exiting after SIGINT', flush=True)
+  GPIO.cleanup()
+  sys.exit(0)
+
+signal.signal(signal.SIGINT, on_sigint)
+
+GPIO.setup("XIO-P7", GPIO.OUT) # LED to GND via resistor
+GPIO.setup("XIO-P0", GPIO.IN)  # Button to GND
+
+while True:
+  GPIO.output("XIO-P7", 1) # "ready"
+  GPIO.wait_for_edge("XIO-P0", GPIO.FALLING)
+  GPIO.output("XIO-P7", 0)
+
+  r = requests.post('{{ lookup('env','LOVETRACK_SERVER_URL') }}')
+  print("Status: %i; Body: %s" % (r.status_code, r.text), flush=True)
+
+  time.sleep(1) # don't press the button more than once a second

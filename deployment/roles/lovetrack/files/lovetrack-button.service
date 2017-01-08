@@ -1,0 +1,12 @@
+[Unit]
+Description=LoveTrack Button
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/lovetrack-button
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=default.target
