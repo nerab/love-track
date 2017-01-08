@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
+gem 'puma'
 gem 'sinatra'
 gem 'slack-notifier'
 gem 'swr3-nowplaying'
