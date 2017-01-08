@@ -22,9 +22,7 @@ be rackup -o 0.0.0.0
 
 # TODO
 
-* Push the web app
-* Proper deployment of the C.H.I.P.
-* Start `button.py` as service
+* Deployment of the web app
 * Detect the nearest Bluetooth device in order to find who's nearby
 * Set the slack picture to the thumbnail included in the SWR3 json
 * Set the slack message's URL to the one included in the SWR3 json, so that we point to the artist and song
