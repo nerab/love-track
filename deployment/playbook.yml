@@ -19,7 +19,7 @@
     unattended_automatic_reboot_time: "03:45"
 
   roles:
-    - common
-    - lovetrack
+    - chip
+    - lovetrack-button
     - geerlingguy.ntp
     - jnv.unattended-upgrades
