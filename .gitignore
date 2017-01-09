@@ -3,4 +3,5 @@
 .cache_rake_t
 .envrc
 deployment/*.retry
+docker.yml
 vendor/

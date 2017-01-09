@@ -2,6 +2,8 @@
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'rake/clean'
+
+# require 'rake/docker'
 load 'lib/rake/docker.rake'
 
 task default: ['spec:ci']
