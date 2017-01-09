@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/local/sbin/lovetrack-button
+Restart=always
 
 [Install]
 WantedBy=default.target
