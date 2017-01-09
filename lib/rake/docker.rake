@@ -1,13 +1,14 @@
+# frozen_string_literal: true
 namespace :docker do
   Image = Struct.new(:name) do
     def run(options)
       run_options = [
         !!options[:detach] ? '--detach' : '',
-        options[:publish].map{|from, to| "--publish #{from}:#{to}"},
+        options[:publish].map { |from, to| "--publish #{from}:#{to}" },
         "--name #{options[:name]}",
       ].join(' ')
 
-      %x(docker run #{run_options} #{image.name})
+      `docker run #{run_options} #{image.name}`
     end
 
     def to_s
@@ -17,19 +18,19 @@ namespace :docker do
 
   Container = Struct.new(:name) do
     def running?
-      %x(docker ps --filter "name=#{name}" --filter "status=running" --format "{{.ID}}").lines.any?
+      `docker ps --filter "name=#{name}" --filter "status=running" --format "{{.ID}}"`.lines.any?
     end
 
     def exist?
-      %x(docker ps --all --filter "name=#{name}" --format "{{.ID}}").lines.any?
+      `docker ps --all --filter "name=#{name}" --format "{{.ID}}"`.lines.any?
     end
 
     def stop
-      %x(docker stop #{name})
+      `docker stop #{name}`
     end
 
     def rm
-      %x(docker rm #{name})
+      `docker rm #{name}`
     end
 
     def to_s
@@ -74,9 +75,9 @@ namespace :docker do
   end
 
   desc 'Run the image as new container'
-  task :run => [:build] do
+  task run: [:build] do
     puts "Running #{image}..."
-    image.run(name: container.name, detach: true, publish: {49857 => 9292})
+    image.run(name: container.name, detach: true, publish: { 49857 => 9292 })
     puts "#{image} is now running as #{container}"
   end
 
