@@ -15,9 +15,8 @@ RUN apk add --no-cache                         \
   && rm -rf /usr/local/lib/ruby/gems/*/cache/* \
   && rm -rf ~/.gem
 
-RUN mkdir /app
 WORKDIR /app
 ADD . /app
 RUN bundle config --global silence_root_warning 1
 RUN bundle install --jobs 4 --without=development test
-CMD puma -e production
+CMD ["puma", "-e", "production"]

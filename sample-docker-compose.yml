@@ -1,0 +1,11 @@
+version: '2'
+services:
+  lovetrack:
+    build: .
+    container_name: lovetrack
+    image: nerab/lovetrack
+    restart: on-failure
+    ports:
+      - 49857:9292
+    environment:
+      SLACK_WEBHOOK_URL: "Replace with value from https://my.slack.com/services/new/incoming-webhook/"

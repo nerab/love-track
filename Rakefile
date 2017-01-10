@@ -2,9 +2,30 @@
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'rake/clean'
+require 'yaml'
 
-# require 'rake/docker'
-load 'lib/rake/docker.rake'
+namespace :docker do
+  def image_name
+    config['services'].values.first['image']
+  end
+
+  def stages
+    @stages ||= if File.exist?('docker-stages.yml')
+                  YAML.load_file('docker-stages.yml')
+                else
+                  { 'staging' => 'staging', 'production' => 'production' }
+                end
+  end
+
+  def config
+    @config ||= YAML.load_file('docker-compose.yml')
+  end
+
+  desc "Promote the image #{image_name} from #{stages['staging']} to #{stages['production']}"
+  task :promote do
+    sh "docker $(docker-machine config #{stages['staging']}) save #{image_name}:latest | pv | docker $(docker-machine config #{stages['production']}) load"
+  end
+end
 
 task default: ['spec:ci']
 
