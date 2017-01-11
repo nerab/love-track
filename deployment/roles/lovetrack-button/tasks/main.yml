@@ -9,7 +9,7 @@
     line: "127.0.0.1 lovetrack-button"
   tags: hostname,dns
 
-- name: Install python
+- name: Install python3
   apt:
     update_cache: yes
     name:
