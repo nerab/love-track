@@ -41,6 +41,13 @@ In this document, the C.H.I.P. will be called `lovetrack`, whereas the controlli
 
   Setting the TERM variable was necessary because ncurses has issues.
 
+* Install python (required for Ansible):
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get -y install python
+  ```
+
 # Environment variables
 
 * `LOVETRACK_SERVER_URL` must point to a running instance of the LoveTrack server. It must be set on the control machine.
