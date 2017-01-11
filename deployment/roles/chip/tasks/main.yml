@@ -1,14 +1,3 @@
-- name: Set hostname
-  hostname:
-    name: lovetrack-button
-  tags: hostname,dns
-
-- name: Set hostname in /etc/hosts
-  lineinfile:
-    dest: /etc/hosts
-    line: "127.0.0.1 lovetrack-button"
-  tags: hostname,dns
-
 - name: Use http redirector for apt
   replace:
     dest: /etc/apt/sources.list
@@ -16,7 +5,7 @@
     replace: 'httpredir'
   tags: apt,localization
 
-- name: Install software
+- name: Install standard software
   apt:
     update_cache: yes
     name:

@@ -1,4 +1,15 @@
-- name: Install prerequisite software
+- name: Set hostname
+  hostname:
+    name: lovetrack-button
+  tags: hostname,dns
+
+- name: Set hostname in /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    line: "127.0.0.1 lovetrack-button"
+  tags: hostname,dns
+
+- name: Install python
   apt:
     update_cache: yes
     name:
