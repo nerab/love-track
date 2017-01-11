@@ -4,8 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/opt/lovetrack-button/bin/lovetrack-button
+ExecStart=/opt/lovetrack-button/lovetrack-button
 Restart=always
+ExecStopPost=/opt/lovetrack-button/unexport_all.sh
 
 [Install]
 WantedBy=default.target

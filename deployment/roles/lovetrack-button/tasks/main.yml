@@ -38,19 +38,27 @@
 
 - name: Remove old LoveTrack button script
   file:
-    src: /usr/local/sbin/lovetrack-button
+    path: /usr/local/sbin/lovetrack-button
     state: absent
   tags: button
+
+- name: Copy LoveTrack unexport script
+  copy:
+    src: unexport_all.sh
+    dest: /opt/lovetrack-button/
+    mode: "0755"
+  tags: python,button,systemd
 
 - name: Copy LoveTrack button script
   template:
     src: lovetrack-button.j2
-    dest: /opt/lovetrack-button/bin/lovetrack-button
+    dest: /opt/lovetrack-button/lovetrack-button
     mode: "0755"
   tags: button
 
 - name: Create LoveTrack button systemd service config
   copy:
+    # if this file changed, run `systemctl daemon-reload` to have it re-read
     src: lovetrack-button.service
     dest: /etc/systemd/system/
     mode: "0664"
