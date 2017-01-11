@@ -50,7 +50,7 @@ In this document, the C.H.I.P. will be called `lovetrack`, whereas the controlli
 The C.H.I.P. will start with the default hostname `chip` so that we need to pass a custom inventory:
 
 ```bash
-control$ ansible-playbook -i chip, --ask-become-password deployment/playbook.yml
+control$ ansible-playbook -i chip, --ask-become-pass deployment/playbook.yml
 ```
 
 We also need `--ask-become-password` because, other than on the Raspberry Pi, the default C.H.I.P. installation asks for the user's password when doing `sudo`. This is changed with the first deployment and `--ask-become-password` is not required afterwards.
