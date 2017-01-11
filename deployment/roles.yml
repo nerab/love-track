@@ -1,0 +1,4 @@
+- src: geerlingguy.ntp
+- src: jnv.unattended-upgrades
+- src: nerab.chip
+- src: nerab.rsyslog-patch

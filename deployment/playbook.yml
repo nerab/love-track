@@ -19,8 +19,8 @@
     unattended_automatic_reboot_time: "03:45"
 
   roles:
-    - chip
+    - nerab.chip
     - lovetrack-button
-    - rsyslog-patch
+    - nerab.rsyslog-patch
     - geerlingguy.ntp
     - jnv.unattended-upgrades

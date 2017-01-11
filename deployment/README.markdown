@@ -17,7 +17,7 @@ In this document, the C.H.I.P. will be called `lovetrack`, whereas the controlli
 * Install the required Ansible roles:
 
   ```bash
-  control$ ansible-galaxy install geerlingguy.ntp jnv.unattended-upgrades
+  control$ ansible-galaxy install -r roles.yml
   ```
 
 # Prepare the C.H.I.P.
@@ -31,12 +31,6 @@ In this document, the C.H.I.P. will be called `lovetrack`, whereas the controlli
   ```
 
   Use `chip` for both username and password. You may have to press ENTER to see the login screen. Exit via pressing `Control-A` and then `Control-Alt-Shift + 7` (on a German keyboard, at least.).
-
-* Enable sshd:
-
-  ```bash
-  chip$ sudo service ssh start
-  ```
 
 * Connect to WiFi:
 
