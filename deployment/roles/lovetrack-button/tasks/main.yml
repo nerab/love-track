@@ -36,10 +36,16 @@
     executable: pip3
   tags: python,button
 
+- name: Remove old LoveTrack button script
+  file:
+    src: /usr/local/sbin/lovetrack-button
+    state: absent
+  tags: button
+
 - name: Copy LoveTrack button script
   template:
     src: lovetrack-button.j2
-    dest: /usr/local/sbin/lovetrack-button
+    dest: /opt/lovetrack-button/bin/lovetrack-button
     mode: "0755"
   tags: button
 
