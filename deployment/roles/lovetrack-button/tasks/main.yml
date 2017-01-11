@@ -53,6 +53,7 @@
 - name: Start the LoveTrack service
   systemd:
     name: lovetrack-button
+    daemon-reload: true
     state: restarted
     enabled: true
   tags: systemd,button
