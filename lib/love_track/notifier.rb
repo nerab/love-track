@@ -5,8 +5,9 @@ require 'slack-notifier'
 module LoveTrack
   class Notifier
     def initialize(url)
-      @slack = Slack::Notifier.new(url)
-      @slack.username = 'LoveTrack'
+      @slack = Slack::Notifier.new(url) do
+        defaults username: 'LoveTrack'
+      end
     end
 
     def notify(msg)

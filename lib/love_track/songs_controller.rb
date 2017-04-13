@@ -22,8 +22,9 @@ module LoveTrack
     get '/' do
       begin
         "#{Time.new}: #{song}"
-      rescue
-        [500, "Sorry; #{$ERROR_INFO.message}"]
+      rescue => e
+        warn e.inspect
+        [500, "Sorry; #{e.message}"]
       end
     end
 
