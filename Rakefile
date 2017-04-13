@@ -20,9 +20,11 @@ namespace :docker do
 
   def config
     @config ||= YAML.load_file('docker-compose.yml')
+  rescue
+    warn 'Could not load docker-compose.yml. Have a look at sample-docker-compose.yml for instance.'
   end
 
-  desc "Promote the image #{image_name} from #{stages['staging']} to #{stages['production']}"
+  desc "Promote the image from #{stages['staging']} to #{stages['production']}"
   task :promote do
     sh "docker $(docker-machine config #{stages['staging']}) save #{image_name}:latest | pv | docker $(docker-machine config #{stages['production']}) load"
   end
