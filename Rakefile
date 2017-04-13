@@ -34,13 +34,11 @@ task default: ['spec:ci']
 
 namespace :spec do
   desc 'Run ci tests'
-  task ci: ['rubocop:auto_correct', :unit]
+  task ci: ['rubocop:auto_correct', :system]
 
-  %w[unit system acceptance].each do |type|
-    desc "Run #{type} tests"
-    RSpec::Core::RakeTask.new(type) do |t|
-      t.pattern = "spec/#{type}/**/*_spec.rb"
-    end
+  desc 'Run system tests'
+  RSpec::Core::RakeTask.new(:system) do |t|
+    t.pattern = 'spec/system/**/*_spec.rb'
   end
 end
 
