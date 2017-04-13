@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require 'English'
 
 require 'swr3_now_playing/loader'
 require 'swr3_now_playing/mapper'
@@ -22,7 +23,7 @@ module LoveTrack
       begin
         "#{Time.new}: #{song}"
       rescue
-        "Sorry; #{$ERROR_INFO.message}"
+        [500, "Sorry; #{$ERROR_INFO.message}"]
       end
     end
 
@@ -36,7 +37,7 @@ module LoveTrack
 
     def song
       json = SWR3::NowPlaying::Loader.load
-      SWR3::NowPlaying::Mapper.map(json)
+      SWR3::NowPlaying::SongMapper.map(json)
     end
 
     def protected!
