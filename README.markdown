@@ -50,6 +50,7 @@ be rackup -o 0.0.0.0
 
 # TODO
 
-* Detect the nearest Bluetooth device in order to find who's nearby
 * Set the slack picture to the thumbnail included in the SWR3 json
 * Set the slack message's URL to the one included in the SWR3 json, so that we point to the artist and song
+* Add an 'love it too' button so that the Slack user gets it registered, too
+* Detect the nearest Bluetooth device in order to find who's nearby
