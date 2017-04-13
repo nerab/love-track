@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 guard :bundler do
   require 'guard/bundler'
   require 'guard/bundler/verify'
@@ -7,7 +9,7 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
-%w(unit system acceptance).each do |type|
+%w[unit system acceptance].each do |type|
   group type do
     guard :rspec, cmd: 'bundle exec rspec' do
       watch(%r{^spec/#{type}/.+_spec\.rb$})

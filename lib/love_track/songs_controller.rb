@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'sinatra/base'
 
 require 'swr3_now_playing/loader'

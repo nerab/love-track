@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
   Include:
     - '**/Gemfile'
     - '**/Rakefile'
@@ -8,6 +8,20 @@ AllCops:
   Exclude:
     - vendor/**/*
     - db/migrations/**/*
+
+  DisplayCopNames:
+    Enabled: true
+
+  DisplayStyleGuide:
+    Enabled: true
+
+Style/FileName:
+  Exclude:
+  - Guardfile
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
 
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
