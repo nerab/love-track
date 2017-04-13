@@ -39,7 +39,7 @@ Afterwards the image just has to be run:
 
 ```
 $ eval "$(docker-machine env production)"
-$ docker-compose start
+$ docker-compose up -d
 ```
 
 ## Development
