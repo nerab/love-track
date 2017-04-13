@@ -1,5 +1,7 @@
 # LoveTrack
 
+[![Build Status](https://travis-ci.org/nerab/love-track.svg?branch=master)](https://travis-ci.org/nerab/love-track)
+
 Takes a POST request, fetches the currently playing SWR3 song, and posts the song to a Slack channel.
 
 The POST request is sent by a BIG red button in the living room, running `button.py` on a C.H.I.P. or Raspberry Pi.
