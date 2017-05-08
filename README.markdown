@@ -31,6 +31,7 @@ Alternatively, the image can also be built on a staging server and then promoted
 
 ```
 $ eval "$(docker-machine env staging)"
+# To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
 $ docker-compose build
 $ bundle exec rake docker:promote
 ```
@@ -39,6 +40,7 @@ Afterwards the image just has to be run:
 
 ```
 $ eval "$(docker-machine env production)"
+# To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
 $ docker-compose up -d
 ```
 
