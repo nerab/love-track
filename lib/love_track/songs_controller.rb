@@ -19,6 +19,7 @@ module LoveTrack
       set :notifier, Notifier.new(ENV.fetch('SLACK_WEBHOOK_URL'))
     end
 
+    # rubocop:disable Lint/RescueWithoutErrorClass
     get '/' do
       begin
         "#{Time.new}: #{song}"

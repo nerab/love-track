@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'love_track/songs_controller'
 
+# rubocop:disable Metrics/BlockLength
 describe LoveTrack::SongsController do
   include Rack::Test::Methods
 
