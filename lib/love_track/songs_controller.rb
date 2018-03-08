@@ -18,15 +18,11 @@ module LoveTrack
     configure :production do
       set :notifier, Notifier.new(ENV.fetch('SLACK_WEBHOOK_URL'))
     end
-
-    # rubocop:disable Lint/RescueWithoutErrorClass
     get '/' do
-      begin
-        "#{Time.new}: #{song}"
-      rescue => e
-        warn e.inspect
-        [500, "Sorry; #{e.message}"]
-      end
+      "#{Time.new}: #{song}"
+    rescue StandardError => e
+      warn e.inspect
+      [500, "Sorry; #{e.message}"]
     end
 
     post '/' do

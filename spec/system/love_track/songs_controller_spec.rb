@@ -72,3 +72,4 @@ describe LoveTrack::SongsController do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
