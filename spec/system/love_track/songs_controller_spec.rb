@@ -12,7 +12,7 @@ describe LoveTrack::SongsController do
   end
 
   let(:body) {
-    { 'frontmod' => [{ 'title' => 'Never gonna give you up', 'artist' => { 'name' => 'Rick Astley' }, }] }.to_json
+    { 'frontmod' => [{ 'title' => 'Never gonna give you up', 'artist' => { 'name' => 'Rick Astley' } }] }.to_json
   }
 
   it 'returns the current song' do
