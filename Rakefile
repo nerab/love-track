@@ -21,7 +21,7 @@ namespace :docker do
   def config
     @config ||= YAML.load_file('docker-compose.yml')
   rescue Errno::ENOENT
-    fail 'Could not load docker-compose.yml. Have a look at sample-docker-compose.yml for instance.'
+    raise 'Could not load docker-compose.yml. Have a look at sample-docker-compose.yml for instance.'
   end
 
   desc "Promote the image from #{stages['staging']} to #{stages['production']}"

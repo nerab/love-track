@@ -13,9 +13,9 @@ end
   group type do
     guard :rspec, cmd: 'bundle exec rspec' do
       watch(%r{^spec/#{type}/.+_spec\.rb$})
-      watch(%r{^lib/(?<module>.*/)(?<file>.+)\.rb$}) { |m|
+      watch(%r{^lib/(?<module>.*/)(?<file>.+)\.rb$}) do |m|
         "spec/unit/#{m[:module]}#{m[:file]}_spec.rb"
-      }
+      end
       watch('spec/spec_helper.rb') { 'spec' }
     end
   end
