@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'puma'
 gem 'sinatra'
 gem 'slack-notifier'
-gem 'swr3-nowplaying'
+gem 'swr3-nowplaying', '>= 0.0.5'
 
 group :development do
   gem 'guard-bundler', require: false

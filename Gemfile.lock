@@ -123,7 +123,7 @@ GEM
       rack-protection (= 2.0.5)
       tilt (~> 2.0)
     slack-notifier (2.3.2)
-    swr3-nowplaying (0.0.4)
+    swr3-nowplaying (0.0.5)
     terminal-notifier (2.0.0)
     thor (0.20.3)
     tilt (2.0.9)
@@ -162,7 +162,7 @@ DEPENDENCIES
   rubocop
   sinatra
   slack-notifier
-  swr3-nowplaying
+  swr3-nowplaying (>= 0.0.5)
   terminal-notifier
   travis
   webmock
